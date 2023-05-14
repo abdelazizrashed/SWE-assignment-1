@@ -16,3 +16,10 @@ steps:
     source env/bin/activate
     pytest --junitxml=junit/test-results.xml --cov=app --cov-report=xml
   displayName: 'Run unit tests'
+  
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage.xml'
+  displayName: 'Publish code coverage results'
+
